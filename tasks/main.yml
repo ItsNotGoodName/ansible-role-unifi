@@ -1,2 +1,48 @@
 ---
-# tasks file for itsnotgoodname.unifi
+- name: Install unifi dependencies
+  apt:
+    name:
+      - gpg
+      - ca-certificates
+      - apt-transport-https
+  become: true
+  tags: unifi
+
+- import_tasks: "repo.yml"
+
+- name: Add unifi repo key
+  apt_key:
+    url: https://dl.ui.com/unifi/unifi-repo.gpg
+    state: present
+  become: true
+  tags: unifi
+
+- name: Add unifi repository into sources list
+  apt_repository:
+    repo: deb https://www.ui.com/downloads/unifi/debian stable ubiquiti
+    state: present
+    filename: 100-ubnt-unifi.list
+  become: true
+  tags: unifi
+
+- name: Install unifi package
+  apt:
+    name: unifi
+    state: present
+  become: true
+  tags: unifi
+
+- name: Put unifi package on hold
+  dpkg_selections:
+    name: unifi
+    selection: hold
+  become: true
+  tags: unifi
+
+- name: Start and enable unifi
+  systemd:
+    name: unifi
+    state: started
+    enabled: true
+  become: true
+  tags: unifi

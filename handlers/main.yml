@@ -1,2 +1,5 @@
 ---
-# handlers file for itsnotgoodname.unifi
+- name: update apt cache
+  apt:
+    update_cache: true
+  become: true

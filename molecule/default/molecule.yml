@@ -4,8 +4,15 @@ dependency:
 driver:
   name: podman
 platforms:
-  - name: debian11
-    image: docker.io/geerlingguy/docker-debian11-ansible:latest
+  - name: instance
+    image: "docker.io/geerlingguy/docker-${MOLECULE_DISTRO:-debian9}-ansible:latest"
+    command: /sbin/init
+    privileged: true
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
     pre_build_image: true
 provisioner:
   name: ansible
