@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include itsnotgoodname.unifi"
+      include_role:
+        name: "itsnotgoodname.unifi"
