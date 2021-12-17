@@ -1,5 +1,6 @@
 ---
-- name: update apt cache
-  apt:
-    update_cache: true
+- name: restart unifi
+  systemd:
+    name: unifi
+    state: restarted
   become: true

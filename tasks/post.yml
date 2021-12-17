@@ -1,0 +1,9 @@
+---
+- name: Edit /etc/init.d/unifi to use different JAVA_HOME
+  lineinfile:
+    path: /etc/init.d/unifi
+    regexp: JAVA_HOME=\/usr\/lib\/jvm\/java-8-openjdk-\${arch}$
+    line: JAVA_HOME=/usr/lib/jvm/adoptopenjdk-8-hotspot-jre-${arch}
+  become: true
+  notify: restart unifi
+  tags: unifi

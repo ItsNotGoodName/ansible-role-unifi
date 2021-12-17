@@ -1,4 +1,10 @@
 ---
+- name: Check if running on Debian 9, 10, or 11
+  assert:
+    that:
+      - ansible_distribution == "Debian"
+      - ansible_distribution_version == "11" or ansible_distribution_version == "10" or ansible_distribution_version == "9"
+
 - name: Install unifi dependencies
   apt:
     name:
@@ -8,7 +14,11 @@
   become: true
   tags: unifi
 
-- import_tasks: "repo.yml"
+- import_tasks: "pre.yml"
+  tags: unifi
+  when: ansible_distribution_version == "11" or ansible_distribution_version == "10"
+
+- meta: flush_handlers
 
 - name: Add unifi repo key
   apt_key:
@@ -38,6 +48,12 @@
     selection: hold
   become: true
   tags: unifi
+
+- import_tasks: "post.yml"
+  tags: unifi
+  when: ansible_distribution_version == "11" or ansible_distribution_version == "10"
+
+- meta: flush_handlers
 
 - name: Start and enable unifi
   systemd:

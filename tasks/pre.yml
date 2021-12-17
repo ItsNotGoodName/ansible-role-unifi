@@ -1,0 +1,35 @@
+---
+- name: Add mongodb 3.6 repo key
+  apt_key:
+    url: https://www.mongodb.org/static/pgp/server-3.6.asc
+    state: present
+  become: true
+  tags: unifi
+
+- name: Add mongodb 3.6 repo
+  apt_repository:
+    repo: deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/3.6 main
+    state: present
+  become: true
+  tags: unifi
+
+- name: Add openjdk repo key
+  apt_key:
+    url: https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public
+    state: present
+  become: true
+  tags: unifi
+
+- name: Add openjdk repo
+  apt_repository:
+    repo: "deb https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ {{ ansible_distribution_release }} main"
+    state: present
+  become: true
+  tags: unifi
+
+- name: Install java 8 jre
+  apt:
+    name: adoptopenjdk-8-hotspot-jre
+    state: present
+  become: true
+  tags: unifi
