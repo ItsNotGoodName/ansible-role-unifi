@@ -27,11 +27,11 @@
   become: true
   tags: unifi
 
-- name: Add unifi repository into sources list
+- name: Add unifi repo
   apt_repository:
+    filename: 100-unifi
     repo: deb https://www.ui.com/downloads/unifi/debian stable ubiquiti
     state: present
-    filename: 100-ubnt-unifi.list
   become: true
   tags: unifi
 

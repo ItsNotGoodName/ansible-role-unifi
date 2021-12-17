@@ -8,6 +8,7 @@
 
 - name: Add mongodb 3.6 repo
   apt_repository:
+    filename: 100-mongodb
     repo: deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/3.6 main
     state: present
   become: true
@@ -22,12 +23,13 @@
 
 - name: Add openjdk repo
   apt_repository:
+    filename: 100-adoptopenjdk
     repo: "deb https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ {{ ansible_distribution_release }} main"
     state: present
   become: true
   tags: unifi
 
-- name: Install java 8 jre
+- name: Install adoptopenjdk-8-hotspot-jre
   apt:
     name: adoptopenjdk-8-hotspot-jre
     state: present
