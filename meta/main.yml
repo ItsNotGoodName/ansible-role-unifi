@@ -1,6 +1,6 @@
 galaxy_info:
   author: itsnotgoodname
-  description: UniFi Network Application for Debian.
+  description: UniFi Network Application for Debian 9, 10, and 11.
   role_name: unifi
 
   # If the issue tracker for your role is not on github, uncomment the
