@@ -35,3 +35,13 @@
     state: present
   become: true
   tags: unifi
+
+- name: Create symlink to adoptopenjdk-8-hotspot-jre
+  file:
+    src: "/usr/lib/jvm/adoptopenjdk-8-hotspot-jre-{{ unifi_java_arch }}"
+    dest: "/usr/lib/jvm/java-8-openjdk-{{ unifi_java_arch }}"
+    owner: root
+    group: root
+    state: link
+  become: true
+  tags: unifi

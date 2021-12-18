@@ -15,11 +15,9 @@
   become: true
   tags: unifi
 
-- import_tasks: "pre.yml"
+- import_tasks: repos.yml
   tags: unifi
   when: ansible_distribution_version == "11" or ansible_distribution_version == "10"
-
-- meta: flush_handlers
 
 - name: Add unifi repo key
   apt_key:
@@ -49,12 +47,6 @@
     selection: hold
   become: true
   tags: unifi
-
-- import_tasks: "post.yml"
-  tags: unifi
-  when: ansible_distribution_version == "11" or ansible_distribution_version == "10"
-
-- meta: flush_handlers
 
 - name: Start and enable unifi
   systemd:

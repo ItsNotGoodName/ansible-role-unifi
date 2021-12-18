@@ -1,6 +1,0 @@
----
-- name: restart unifi
-  systemd:
-    name: unifi
-    state: restarted
-  become: true
