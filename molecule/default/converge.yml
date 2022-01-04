@@ -8,6 +8,6 @@
       changed_when: false
       become: true
   tasks:
-    - name: "Include itsnotgoodname.unifi"
-      include_role:
+    - name: "Import itsnotgoodname.unifi"
+      import_role:
         name: "itsnotgoodname.unifi"
