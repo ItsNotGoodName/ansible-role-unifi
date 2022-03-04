@@ -7,12 +7,6 @@ This role follows Ubiquiti's [official guide](https://help.ui.com/hc/en-us/artic
 
 This role marks the `unifi` package on hold to prevent accidental updates.
 
-Update UniFi by running with the `unifi_update` tag.
-
-```yaml
-ansible-playbook main.yml --tags unifi_update
-```
-
 ## Requirements
 
 N/A

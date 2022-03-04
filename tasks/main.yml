@@ -43,26 +43,12 @@
   become: true
   tags: unifi
 
-- name: Update unifi
-  apt:
-    name: unifi
-    state: latest
-    update_cache: true
-    cache_valid_time: 3600
-  become: true
-  when: "'unifi_update' in ansible_run_tags"
-  tags: 
-    - unifi
-    - unifi_update
-
 - name: Put unifi package on hold or install
   dpkg_selections:
     name: unifi
     selection: "{{ (unifi_hold | bool) | ternary('hold', 'install') }}"
   become: true
-  tags: 
-    - unifi
-    - unifi_update
+  tags: unifi
 
 - name: Start and enable unifi
   systemd:
