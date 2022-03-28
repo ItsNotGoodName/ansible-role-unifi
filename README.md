@@ -13,7 +13,7 @@ N/A
 
 ## Role Variables
 
-N/A
+See [defaults/main.yml](defaults/main.yml).
 
 ## Dependencies
 
