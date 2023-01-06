@@ -4,9 +4,7 @@
     that:
       - ansible_distribution == "Debian"
       - ansible_distribution_version == "11" or ansible_distribution_version == "10" or ansible_distribution_version == "9"
-  tags: 
-    - unifi
-    - always
+  tags: unifi
 
 - name: Install unifi dependencies
   apt:
