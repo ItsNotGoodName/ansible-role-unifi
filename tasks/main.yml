@@ -1,9 +1,9 @@
 ---
-- name: Check if running on Debian 9, 10, or 11
+- name: Check if running on Debian 10 or 11
   assert:
     that:
       - ansible_distribution == "Debian"
-      - ansible_distribution_version == "11" or ansible_distribution_version == "10" or ansible_distribution_version == "9"
+      - ansible_distribution_version == "10" or ansible_distribution_version == "11"
   tags: unifi
 
 - name: Install unifi dependencies
@@ -15,9 +15,8 @@
   become: true
   tags: unifi
 
-- import_tasks: repos.yml
+- import_tasks: mongodb.yml
   tags: unifi
-  when: ansible_distribution_version == "11" or ansible_distribution_version == "10"
 
 - name: Add unifi repo key
   apt_key:

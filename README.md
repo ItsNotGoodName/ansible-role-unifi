@@ -1,7 +1,8 @@
 # ansible-role-unifi
 
-UniFi Network Application for Debian 9, 10, and 11.
-Debian 10 and 11 will install third party MongoDB and Java repositories.
+UniFi Network Application for Debian 10 and 11.
+
+MongoDB repository will be added.
 
 This role follows Ubiquiti's [official guide](https://help.ui.com/hc/en-us/articles/220066768-UniFi-Network-How-to-Install-and-Update-via-APT-on-Debian-or-Ubuntu).
 
