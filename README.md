@@ -8,30 +8,22 @@ This role follows Ubiquiti's [official guide](https://help.ui.com/hc/en-us/artic
 
 This role marks the `unifi` package on hold to prevent accidental updates.
 
-## Requirements
+# Requirements
 
 N/A
 
-## Role Variables
+# Role Variables
 
 See [defaults/main.yml](defaults/main.yml).
 
-## Dependencies
+# Dependencies
 
 N/A
 
-## Example Playbook
+# Example Playbook
 
 ```yaml
 - hosts: all
   roles:
     - itsnotgoodname.unifi
 ```
-
-## License
-
-MIT
-
-## Author Information
-
-ItsNotGoodName
