@@ -1,6 +1,6 @@
 # ansible-role-unifi
 
-UniFi Network Application for Debian 10 and 11.
+UniFi Network Application for Debian 11.
 
 MongoDB repository will be added.
 

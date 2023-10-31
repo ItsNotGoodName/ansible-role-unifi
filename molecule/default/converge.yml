@@ -7,7 +7,5 @@
       when: ansible_os_family == 'Debian'
       changed_when: false
       become: true
-  tasks:
-    - name: "Import itsnotgoodname.unifi"
-      import_role:
-        name: "itsnotgoodname.unifi"
+  roles:
+    - role: itsnotgoodname.unifi

@@ -1,11 +1,4 @@
 ---
-- name: Check if running on Debian 10 or 11
-  assert:
-    that:
-      - ansible_distribution == "Debian"
-      - ansible_distribution_major_version == "10" or ansible_distribution_major_version == "11"
-  tags: unifi
-
 - name: Install unifi dependencies
   apt:
     name:
