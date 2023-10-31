@@ -1,3 +1,10 @@
 ---
-unifi_java_arch: amd64
 unifi_hold: true
+
+libssl_architectures:
+  arm64: arm64
+  armv5l: armel
+  armv6l: armel
+  armv7l: armhf
+  i386: i386
+  x86_64: amd64

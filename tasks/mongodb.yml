@@ -13,3 +13,10 @@
     state: present
   become: true
   tags: unifi
+
+- name: Install libssl1.1 for Debian 12
+  apt:
+    deb: "https://ftp.debian.org/debian/pool/main/o/openssl/libssl1.1_1.1.1w-0+deb11u1_{{ libssl_architectures[ansible_architecture] }}.deb"
+  become: true
+  tags: unifi
+  when: ansible_distribution == "Debian" and ansible_distribution_major_version == "12"
