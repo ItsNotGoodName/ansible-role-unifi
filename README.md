@@ -10,22 +10,30 @@ Following steps will be taken:
 - `libssl1.1` package will be added for Debian 12.
 - `unifi` package put on hold to prevent accidental updates.
 
-# Requirements
+## Requirements
 
 N/A
 
-# Role Variables
+## Role Variables
 
 See [defaults/main.yml](defaults/main.yml).
 
-# Dependencies
+## Dependencies
 
 N/A
 
-# Example Playbook
+## Example Playbook
 
 ```yaml
 - hosts: all
   roles:
     - itsnotgoodname.unifi
 ```
+
+## License
+
+MIT
+
+## Author Information
+
+ItsNotGoodName
