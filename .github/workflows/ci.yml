@@ -3,9 +3,16 @@
 name: CI
 
 on:
+  # Weekly CI job because new UniFi versions may break this role
+  schedule:
+    # “At 02:00 on Sunday.”
+    - cron: "0 2 * * 0"
   push:
     branches:
       - master
+    paths-ignore:
+      - "*.md"
+      - "meta/*"
 
 jobs:
   molecule:
