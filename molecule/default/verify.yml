@@ -1,13 +1,14 @@
+# vim:ft=yaml.ansible
 ---
 - name: Verify
   hosts: all
   gather_facts: false
   tasks:
     - name: Collect facts about system services
-      service_facts:
+      ansible.builtin.service_facts:
       register: services_state
     - name: Test if unifi is enabled and running
-      assert:
+      ansible.builtin.assert:
         that:
           - services_state.ansible_facts.services["unifi.service"]["state"] == "running"
           - services_state.ansible_facts.services["unifi.service"]["status"] == "enabled"

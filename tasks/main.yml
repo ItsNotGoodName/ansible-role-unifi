@@ -1,6 +1,7 @@
+# vim:ft=yaml.ansible
 ---
 - name: Install unifi dependencies
-  apt:
+  ansible.builtin.apt:
     name:
       - gpg
       - ca-certificates
@@ -8,18 +9,19 @@
   become: true
   tags: unifi
 
-- import_tasks: mongodb.yml
+- name: Import mongodb.yml
+  ansible.builtin.import_tasks: mongodb.yml
   tags: unifi
 
 - name: Add unifi repo key
-  apt_key:
+  ansible.builtin.apt_key:
     url: https://dl.ui.com/unifi/unifi-repo.gpg
     state: present
   become: true
   tags: unifi
 
 - name: Add unifi repo
-  apt_repository:
+  ansible.builtin.apt_repository:
     filename: 100-unifi
     repo: deb https://www.ui.com/downloads/unifi/debian stable ubiquiti
     state: present
@@ -27,21 +29,21 @@
   tags: unifi
 
 - name: Install unifi package
-  apt:
+  ansible.builtin.apt:
     name: unifi
     state: present
   become: true
   tags: unifi
 
 - name: Put unifi package on hold or install
-  dpkg_selections:
+  ansible.builtin.dpkg_selections:
     name: unifi
     selection: "{{ (unifi_hold | bool) | ternary('hold', 'install') }}"
   become: true
   tags: unifi
 
 - name: Start and enable unifi
-  systemd:
+  ansible.builtin.systemd:
     name: unifi
     state: started
     enabled: true
