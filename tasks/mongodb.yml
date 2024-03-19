@@ -1,23 +1,20 @@
 # vim:ft=yaml.ansible
 ---
-- name: Add mongodb 3.6 repo key
-  ansible.builtin.apt_key:
-    url: https://www.mongodb.org/static/pgp/server-3.6.asc
-    state: present
+- name: Add mongodb 7.0 repo key
+  ansible.builtin.shell:
+    cmd: |
+      set -o pipefail
+      curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor
+    creates: /usr/share/keyrings/mongodb-server-7.0.gpg
+  args:
+    executable: /bin/bash
   become: true
   tags: unifi
 
-- name: Add mongodb 3.6 repo
+- name: Add mongodb 7.0 repo
   ansible.builtin.apt_repository:
-    filename: 100-mongodb
-    repo: deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/3.6 main
+    filename: mongodb-org-7.0
+    repo: "deb [ signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] http://repo.mongodb.org/apt/debian {{ ansible_distribution_release }}/mongodb-org/7.0 main"
     state: present
   become: true
   tags: unifi
-
-- name: Install libssl1.1 for Debian 12
-  ansible.builtin.apt:
-    deb: "https://ftp.debian.org/debian/pool/main/o/openssl/libssl1.1_1.1.1w-0+deb11u1_{{ libssl_architectures[ansible_architecture] }}.deb"
-  become: true
-  tags: unifi
-  when: ansible_distribution == "Debian" and ansible_distribution_major_version == "12"

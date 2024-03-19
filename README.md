@@ -6,8 +6,7 @@ This role follows Ubiquiti's [official guide](https://help.ui.com/hc/en-us/artic
 
 Following steps will be taken:
 
-- Official MongoDB apt repository will be added.
-- `libssl1.1` package will be added for Debian 12.
+- MongoDB 7.0 Community Edition will be installed.
 - `unifi` package put on hold to prevent accidental updates.
 
 ## Requirements

@@ -3,6 +3,7 @@
 - name: Install unifi dependencies
   ansible.builtin.apt:
     name:
+      - curl
       - gpg
       - ca-certificates
       - apt-transport-https
