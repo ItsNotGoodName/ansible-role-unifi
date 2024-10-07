@@ -1,2 +1,3 @@
 ---
 unifi_hold: true
+unifi_mongodb_legacy: false

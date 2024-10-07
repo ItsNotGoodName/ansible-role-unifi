@@ -15,7 +15,10 @@ N/A
 
 ## Role Variables
 
-See [defaults/main.yml](defaults/main.yml).
+| Variable               | Default | `Description                                     |
+| ---------------------- | ------- | ------------------------------------------------ |
+| `unifi_hold`           | false   | Prevent UniFi from updating during `apt upgrade` |
+| `unifi_mongodb_legacy` | false   | Set MongoDB version to 4.4                       |
 
 ## Dependencies
 
