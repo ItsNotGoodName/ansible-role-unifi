@@ -15,10 +15,10 @@ N/A
 
 ## Role Variables
 
-| Variable               | Default | `Description                                     |
-| ---------------------- | ------- | ------------------------------------------------ |
-| `unifi_hold`           | false   | Prevent UniFi from updating during `apt upgrade` |
-| `unifi_mongodb_legacy` | false   | Set MongoDB version to 4.4                       |
+| Variable                | Default | `Description                                     |
+| ----------------------- | ------- | ------------------------------------------------ |
+| `unifi_hold`            | false   | Prevent UniFi from updating during `apt upgrade` |
+| `unifi_mongodb_version` | 7.0     | Can be 7.0 or 4.4                                |
 
 ## Dependencies
 

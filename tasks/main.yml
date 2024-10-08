@@ -10,8 +10,8 @@
   become: true
   tags: unifi
 
-- name: Import mongodb.yml
-  ansible.builtin.import_tasks: "mongodb{{ '-legacy' if unifi_mongodb_legacy else '' }}.yml"
+- name: Import mongodb tasks
+  ansible.builtin.include_tasks: "mongodb-{{ unifi_mongodb_version }}.yml"
   tags: unifi
 
 - name: Add unifi repo key

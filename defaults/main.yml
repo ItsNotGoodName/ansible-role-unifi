@@ -1,3 +1,3 @@
 ---
 unifi_hold: true
-unifi_mongodb_legacy: false
+unifi_mongodb_version: "7.0"
